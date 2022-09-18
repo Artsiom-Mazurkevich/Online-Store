@@ -11,6 +11,7 @@ class DeviceController {
             const {img} = req.files
             let fileName = uuid.v4() + '.jpg'
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
+
             const device = await Device.create({title, price, brandId, typeId, img: fileName})
             return res.json(device)
         } catch (e) {
